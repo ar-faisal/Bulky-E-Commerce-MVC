@@ -1,0 +1,42 @@
+﻿@model Category  //Here it creates a object of type category with null values, we can pass the same in controller public IActionResult Create(){ return View(new Category()); }
+
+<form method="post">
+    <input asp-for="Id" hidden /> 
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Delete Category</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="mb-3 row p-1">
+            <!-- <label class="p-8">Category Name</label>
+            <input type="text" class="form-control"/>  -->
+
+            <label asp-for="Name" class="p-8"></label> <!-- similarly [DisplayName("Category Name")] -->
+            <input asp-for="Name" disabled class="form-control" />
+            <!--Here we have to write asp-for Name, and this Name should be same in the model Category, and we bind it to the form //Now by writing this, we dont have to say the type text also-->
+            
+
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="DisplayOrder" class="p-8"></label>
+            <input asp-for="DisplayOrder" disabled class="form-control" />
+            <!--But now it displays the name Displayorder, which is in the class, so we change it there and add the dataannotation [DisplayName("Display Order")]-->
+            
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-6">
+                <button type="submit" class="btn btn-danger form-control" style="width:150px">Delete</button>
+            </div>
+            <div class="col-6 col-md-6">
+                <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary" style="width:150px">
+                    Back to List
+                </a>
+            </div>
+        </div>
+
+
+
+    </div>
+</form>
+
